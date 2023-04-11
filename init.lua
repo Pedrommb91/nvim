@@ -1,7 +1,1 @@
-require("pedro.plugins-setup")
-require("pedro.core.options")
-require("pedro.core.keymaps")
-require("pedro.core.colorscheme")
-require("pedro.plugins.comment")
-require("pedro.plugins.treesitter")
-require("pedro.plugins.gruvbox")
+require("pedro")
