@@ -1,21 +1,41 @@
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "javascript", "typescript", "go", "c", "lua", "vim", "vimdoc", "query" },
+local setup, treesitter = pcall(require, "nvim-treesitter.configs")
+if not setup then return end
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+vim.opt.foldmethod="expr"
+vim.opt.foldexpr="nvim_treesitter#foldexpr()"
+vim.opt.foldenable=false
 
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+treesitter.setup {
+  ensure_installed = {
+    "dockerfile",
+    "gitignore",
+    "go",
+    "gomod",
+    "gowork",
+    "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "proto",
+    "python",
+    "rego",
+    "ruby",
+    "sql",
+    "svelte",
+    "yaml",
+  },
+  indent = {
+    enable = true,
+  },
   auto_install = true,
-
+  sync_install = false,
   highlight = {
     enable = true,
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    disable = { "markdown" },
+  --   -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+  --   -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+  --   -- Using this option may slow down your editor, and you may see some duplicate highlights.
+  --   -- Instead of true it can also be a list of languages
+  --   additional_vim_regex_highlighting = false,
   },
 }

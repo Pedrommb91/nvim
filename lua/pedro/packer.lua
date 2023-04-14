@@ -6,7 +6,8 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
+  
+  -- color scheme
   use({
       'rose-pine/neovim',
       as = 'rose-pine',
@@ -15,40 +16,35 @@ return require('packer').startup(function(use)
       end
   })
 
+  -- Productivity
+  use { "nvim-tree/nvim-web-devicons" }
+  use "nvim-lualine/lualine.nvim"
   use {
       'nvim-telescope/telescope.nvim', tag = '0.1.1',
       -- or                            , branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('theprimeagen/harpoon')
+
+  -- Development
+  use "lewis6991/gitsigns.nvim"
+  use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use "nvim-treesitter/nvim-treesitter-textobjects"
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
 
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v2.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},             -- Required
-		  {                                      -- Optional
-		  'williamboman/mason.nvim',
-		  run = function()
-			  pcall(vim.cmd, 'MasonUpdate')
-		  end,
-	  },
-	  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+  use "fatih/vim-go"                        -- https://github.com/fatih/vim-go
+  use "SirVer/ultisnips"                    -- https://github.com/sirver/UltiSnips
+  use "hrsh7th/cmp-nvim-lsp"                -- https://github.com/hrsh7th/cmp-nvim-lsp
+  use "hrsh7th/nvim-cmp"                    -- https://github.com/hrsh7th/nvim-cmp
+  use "neovim/nvim-lspconfig"               -- https://github.com/neovim/nvim-lspconfig
+  use "onsails/lspkind-nvim"                -- https://github.com/onsails/lspkind-nvim
+  use "quangnguyen30192/cmp-nvim-ultisnips" -- https://github.com/quangnguyen30192/cmp-nvim-ultisnips
+  use "williamboman/nvim-lsp-installer"     -- https://github.com/williamboman/nvim-lsp-installer
 
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},     -- Required
-    {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    {'L3MON4D3/LuaSnip'},     -- Required
-  }
-}
-
-use 'mfussenegger/nvim-dap'
-use 'leoluz/nvim-dap-go'
-use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} 
+  use 'mfussenegger/nvim-dap'
+  use 'leoluz/nvim-dap-go'
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} 
 }
 end)
