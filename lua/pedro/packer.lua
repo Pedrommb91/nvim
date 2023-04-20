@@ -34,6 +34,7 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
 
+  use {'ray-x/go.nvim', run = ':GoUpdateBinaries'}
   use "fatih/vim-go"                        -- https://github.com/fatih/vim-go
   use "SirVer/ultisnips"                    -- https://github.com/sirver/UltiSnips
   use "hrsh7th/cmp-nvim-lsp"                -- https://github.com/hrsh7th/cmp-nvim-lsp
